@@ -6,8 +6,8 @@ import CategoryCard from "./CategoryCard";
 function Category() {
   return (
     <section className={classes.category_container}>
-      {categoryInfos.map((infos) => (
-        <CategoryCard data={infos} />
+      {categoryInfos?.map((infos) => (
+        <CategoryCard data={infos} key={infos.id} />
       ))}
     </section>
   )
