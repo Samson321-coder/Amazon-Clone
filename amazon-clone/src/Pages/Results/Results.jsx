@@ -17,6 +17,7 @@ function Results() {
       .get(`${productUrl}/products/category/${categoryName}`)
       .then((res) => {
         setResults(res.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +34,12 @@ function Results() {
         <hr />
         <div className={classes.products_container}>
           {results?.map((product) => (
-            <ProductCard key={product.id} product={product} /> 
+            <ProductCard 
+            key={product.id} 
+            product={product}
+            renderDesc={false}
+            renderAdd={true}
+            /> 
           ))
         }
         </div>
