@@ -7,9 +7,10 @@ import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../DataProvider/DataProvider";
+import {auth} from "../../Utility/firebase"
 
 function Header() {
-  const [{ basket }, dispatch] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
@@ -51,7 +52,7 @@ function Header() {
                 id="#"
                 placeholder="search product"
               ></input>
-              <MdOutlineSearch size={25} />
+              <MdOutlineSearch size={38} />
             </div>
 
             {/* third div  */}
@@ -68,10 +69,19 @@ function Header() {
                 </section>
               </Link>
 
-              <Link to="/Sign In">
+              <Link to={!user && "/auth"}>
                 <div>
-                  <p>Hello, Sign In</p>
-                  <span>Account & Lists</span>
+                  {user ? (
+                    <>
+                      <p>Hello {user?.email?.split("@")[0]} </p>
+                      <span onClick={() => auth.signOut()}>Sign Out</span>
+                    </>
+                  ) : (
+                    <>
+                      <p>Hello, Sign In</p>
+                      <span>Account & Lists</span>
+                    </>
+                  )}
                 </div>
               </Link>
               {/* orders  */}

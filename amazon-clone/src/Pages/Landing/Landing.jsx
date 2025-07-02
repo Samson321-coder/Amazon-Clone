@@ -1,8 +1,8 @@
-import React from 'react'
-import LayOut from '../../Components/LayOut/LayOut'
-import CarouselEffect from '../../Components/Carousel/CarouselEffect';
-import Category from '../../Components/Category/Category';
-import Product from '../../Components/Product/Product';
+import React from "react";
+import LayOut from "../../Components/LayOut/LayOut";
+import CarouselEffect from "../../Components/Carousel/CarouselEffect";
+import Category from "../../Components/Category/Category";
+import Product from "../../Components/Product/Product";
 
 function Landing() {
   return (
@@ -14,4 +14,4 @@ function Landing() {
   );
 }
 
-export default Landing
+export default Landing;
