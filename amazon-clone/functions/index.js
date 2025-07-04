@@ -20,6 +20,7 @@ dotenv.config();
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const app = express();
+// setGlobalOptions({ maxInstances: 10 });
 app.use(cors({ origin: true }));
 app.use(express.json());
 app.get("/", (req, res) => {
@@ -44,6 +45,7 @@ app.post("/payment/create", async (req, res) => {
     });
   }
 });
+// setGlobalOptions({ maxInstances: 10 });
 
 
 exports.api = onRequest(app);

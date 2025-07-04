@@ -15,7 +15,7 @@ function Orders() {
       .collection("orders")
       .orderBy("created", "desc")
       .onSnapshot((snapshot)=>{
-        console.log(snapshot);
+        // console.log(snapshot);
         setOrders(
           snapshot.docs.map((doc)=>({
             id:doc.id,
@@ -26,14 +26,14 @@ function Orders() {
     }else{
       setOrders([]);
     }
-  },[user]);
+  },[]);
 
   return (
     <LayOut>
       <section className={classes.container}>
         <div className={classes.orders_container}>
           <h2>Your Orders</h2>
-          {orders?.length===0&&
+          {orders?.length==0&&
           <div style={{padding:"20px"}}> You don't have orders yet.</div>}
           {/* ordered items  */}
           <div>{
