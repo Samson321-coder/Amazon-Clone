@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
+    "gh-pages": "^6.3.0",
     "github-pages": "^3.0.2"
   }
 }
