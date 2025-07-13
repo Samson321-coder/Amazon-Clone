@@ -6,27 +6,27 @@ import { DataContext } from '../../Components/DataProvider/DataProvider';
 import ProductCard from "../../Components/Product/ProductCard"
 
 function Orders() {
-  const [{user}, dispatch] = useContext(DataContext)
+  const [{ user }, dispatch] = useContext(DataContext);
   const [orders, setOrders] = useState([])
-  useEffect(()=>{
-    if(user){
+  useEffect(() => {
+    if (user) {
       db.collection("users")
-      .doc(user.uid)
-      .collection("orders")
-      .orderBy("created", "desc")
-      .onSnapshot((snapshot)=>{
-        // console.log(snapshot);
-        setOrders(
-          snapshot.docs.map((doc)=>({
-            id:doc.id,
-            data:doc.data(),
-          }))
-        );
-      });
-    }else{
+        .doc(user.uid)
+        .collection("orders")
+        .orderBy("created", "desc")
+        .onSnapshot((snapshot) => {
+          // console.log(snapshot);
+          setOrders(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          );
+        });
+    } else {
       setOrders([]);
     }
-  },[]);
+  }, []);
 
   return (
     <LayOut>
@@ -43,7 +43,7 @@ function Orders() {
                   <hr/>
                   <p>Order ID:{eachOrder?.id}</p>
                   {
-                    eachOrder?.data?.basket?.map(order=>{
+                    eachOrder?.data?.basket?.map((order)=>{
                       return ( <ProductCard 
                         flex={true}
                         product={order}
